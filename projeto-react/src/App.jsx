@@ -1,32 +1,27 @@
 import { useState } from 'react'
-
+import './App.css'
 import Home from './pages/Home'
 import Sobre from './pages/Sobre'
 import Contato from './pages/Contato'
-
+import {Link, Routes, Route} from 'react-router'
 import './App.css'
 
 function App() {
-  const [pagina, setPagina] = useState('home')
-
-  const renderizarPagina=()=>{
-    if(pagina === 'home') return <Home/>
-    if(pagina === 'sobre') return <Sobre/>
-    if(pagina === 'contato') return <Contato/>
-  
-  }
 
   return (
     <div>
       <h1>Meu site favorito em react (o primeiro)</h1>
       <nav>
-        <button onClick={()=>setPagina('home')}>Home</button>
-        <button onClick={()=>setPagina('sobre')}>Sobre</button>
-        <button onClick={()=>setPagina('contato')}>Contato</button>
+        <Link to='/'>Home </Link>
+        <Link to='/sobre'>Sobre </Link>
+        <Link to='/contato'>Contato </Link>
       </nav>
-      <div>
-        {renderizarPagina()}
-      </div>
+      <hr/>
+      <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/sobre' element={<Sobre/>}/>
+      <Route path='contato' element={<Contato/>}/>
+      </Routes>
     </div>
       
   )
